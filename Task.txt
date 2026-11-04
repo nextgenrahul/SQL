@@ -1,0 +1,32 @@
+
+
+ 1 | Beginner | Company financial statements | SELECT, WHERE, ORDER BY | List the ticker, company name and listing date of all Technology companies listed on or after 1 Jan 2015, newest listing first. 
+|
+
+| 2 | Beginner | Stock market | TOP, ORDER BY | Find the 10 highest-volume trading days in 2025 across all stocks. Show company_id, trade_date, close_price and volume. |
+
+| 3 | Beginner | Mutual funds & ETFs | DISTINCT | List every unique combination of fund house and fund category on offer, sorted by fund house. |
+
+| 4 | Beginner | Mutual funds & ETFs | BETWEEN | Find funds with an expense ratio between 0.10% and 0.60%, cheapest first, showing fund type and category. |
+
+| 5 | Beginner | Banking | IN, date filter | List Home, Auto and Personal loans disbursed in 2024 that are now in Default, highest principal first. |
+
+| 6 | Beginner | Company financial statements | LIKE | Find companies whose name contains "Energy" or "Power", or whose ticker starts with "S". |
+
+| 7 | Beginner | Revenue & profitability | Calculated columns | For FY2025 Q4, show each company's revenue, gross profit (revenue − cost of revenue) and gross margin %, highest margin first. |
+
+| 8 | Beginner | Dividends | COUNT, SUM, GROUP BY | For dividends with an ex-dividend date in 2025, show each company's number of payouts and total dividend per share. |
+
+| 9 | Beginner | Stock market | MIN, MAX, AVG | For each company, show the lowest close, highest close and average daily volume in 2025. |
+
+| 10 | Beginner | Economics | WHERE, comparison | Find the months when India's CPI inflation was above its policy rate (a negative real interest rate), with the gap in percentage points. |
+
+| 11 | Beginner | Banking | GROUP BY | For each borrower segment, show the number of loans, total principal and average interest rate. |
+
+| 12 | Beginner | Balance sheets | Ratio calculation | As of FY2025 Q4, calculate each company's current ratio and debt-to-equity (long-term debt ÷ equity), highest debt-to-equity first. |
+
+| 13 | Beginner | Mutual funds & ETFs | GROUP BY, HAVING | Which fund houses manage more than two funds? Show their fund count and average expense ratio. |
+
+| 14 | Beginner | Stock market | Date functions, JOIN | For ticker NOVT, show the monthly average close and total volume for 2025, with month names, in calendar order. |
+
+| 15 | Beginner | Dividends | CASE WHEN | Classify each dividend as Small (< ₹5), Medium (₹5–20) or Large (> ₹20) per share, and count dividends in each class by dividend type. |

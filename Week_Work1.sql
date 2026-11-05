@@ -119,3 +119,67 @@ Analysts use gross margin because it shows how effectivel a company manages its 
 --FROM economic_indicators
 --WHERE country = 'India'
 --  AND cpi_inflation_pct > policy_rate_pct;
+
+
+--11: For each borrower segment, show number of loans, total principal and average interest rate. Why( The is management understand the composition of it's loan portfolio).
+--SELECT 
+--	borrower_segment,
+--	COUNT(*) AS number_of_loans,
+--	SUM(principal_amount) AS total_principal,
+--	AVG(interest_rate) AS average_interest_rate
+--FROM loans
+--GROUP BY borrower_segment;
+
+--I used GROUP BY to organize the loan records based on borrower segments. This allows me to perform aggregate calculations separately for each segments. I used COUNT() to calculate the number of loans, SUM() calculate the total principal amount, and AVG() to calculate the average interest rate.
+--This approach helps the bank understand its lending distribution across different borrower segments.
+
+
+--12: As of FY2025 Q4, calculate each company's current ratio and debt-to-equity(long-term debt / equity), highest debt-to-equity first.
+--SELECT 
+--	c.ticker,
+--	c.company_name,
+--	i.current_assets / i.current_liabilities AS current_ratio,
+--	1.0 * i.long_term_debt / NULLIF(i.shareholders_equity, 0) AS debt_to_equity
+--FROM balance_sheets AS i
+--INNER JOIN companies AS c
+--ON i.company_id = c.company_id
+--WHERE fiscal_year = '2025' AND fiscal_quarter = '4'
+--ORDER BY debt_to_equity DESC;
+
+
+-- 13: Which fund house manages more than two funds? Show fund count and average expense ratio.
+
+--SELECT 
+--	fund_house,
+--	COUNT(*) AS fund_count,
+--	AVG(expense_ratio) AS average_expense_ratio
+--FROM funds
+--GROUP BY fund_house
+--HAVING COUNT(*) > 2.0;
+
+--GROUP BY is used to organize rows that have the same values in a specified column. It allows us to perform aggregate calculations, such as COUNT(), SUM(), and AVG(), separately for each group.
+
+--HAVING is used to filter groups based on aggregate conditions. In this problem, I use HAVING COUNT(*) > 2 to identify fund houses managing more than two funds.
+
+--Group by is used to collect data from differenet tables and combine them using common column. It is basically groups rows based on specific condition related to column. In fact, group by helps perform mathematic calculations using different function. On the other hand , we use HAVING part of group by, helps filter group level data. HAVING is commonly used for filter aggregate result.
+
+
+
+-- 14: For ticker NOVT, show monthly average close and total volume for 2025, with month names, in calendar order.
+--select * from stock_prices;
+
+SELECT 
+    MONTH(s.trade_date) AS month_number,
+    DATENAME(MONTH, s.trade_date) AS month_name,
+    AVG(s.close_price) AS monthly_avg_close,
+    SUM(s.volume) AS total_volume
+FROM companies AS c
+INNER JOIN stock_prices AS s
+    ON c.company_id = s.company_id
+WHERE c.ticker = 'NOVT'
+  AND s.trade_date >= '2025-01-01'
+  AND s.trade_date < '2026-01-01'
+GROUP BY
+    MONTH(s.trade_date),
+    DATENAME(MONTH, s.trade_date)
+ORDER BY month_number ASC;

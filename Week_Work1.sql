@@ -168,18 +168,77 @@ Analysts use gross margin because it shows how effectivel a company manages its 
 -- 14: For ticker NOVT, show monthly average close and total volume for 2025, with month names, in calendar order.
 --select * from stock_prices;
 
-SELECT 
-    MONTH(s.trade_date) AS month_number,
-    DATENAME(MONTH, s.trade_date) AS month_name,
-    AVG(s.close_price) AS monthly_avg_close,
-    SUM(s.volume) AS total_volume
-FROM companies AS c
-INNER JOIN stock_prices AS s
-    ON c.company_id = s.company_id
-WHERE c.ticker = 'NOVT'
-  AND s.trade_date >= '2025-01-01'
-  AND s.trade_date < '2026-01-01'
-GROUP BY
-    MONTH(s.trade_date),
-    DATENAME(MONTH, s.trade_date)
-ORDER BY month_number ASC;
+--SELECT 
+--    MONTH(s.trade_date) AS month_number,
+--    DATENAME(MONTH, s.trade_date) AS month_name,
+--    AVG(s.close_price) AS monthly_avg_close,
+--    SUM(s.volume) AS total_volume
+--FROM companies AS c
+--INNER JOIN stock_prices AS s
+--    ON c.company_id = s.company_id
+--WHERE c.ticker = 'NOVT'
+--  AND s.trade_date >= '2025-01-01'
+--  AND s.trade_date < '2026-01-01'
+--GROUP BY
+--    MONTH(s.trade_date),
+--    DATENAME(MONTH, s.trade_date)
+--ORDER BY month_number ASC;
+
+
+
+-- 15: Dividend classification -> classify each dividend as small(< 5), Medium(5-20), or large(> 20) per share, and count dividends in each class by dividend type. 
+--SELECT * FROM dividends;
+
+--SELECT 
+--    dividend_type,
+--    CASE
+--        WHEN dividend_per_share < 5 THEN 'Small'
+--        WHEN dividend_per_share <= 20 THEN 'Medium'
+--        ELSE 'Large'
+--    END AS dividend_category,
+--    COUNT(*) AS dividend_count
+--FROM dividends
+--GROUP BY
+--    dividend_type,
+--    CASE
+--        WHEN dividend_per_share < 5 THEN 'Small'
+--        WHEN dividend_per_share <= 20 THEN 'Medium'
+--        ELSE 'Large'
+--    END;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
